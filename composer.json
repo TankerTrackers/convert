@@ -1,0 +1,27 @@
+{
+  "name" : "tankertrackers/convert",
+  "description" : "I convert things to other things!",
+  "homepage" : "https://github.com/TankerTrackers/Convert",
+  "type" : "library",
+  "require" : {
+    "phpunit/phpunit" : "^7.0"
+  },
+  "license" : "MIT",
+  "authors" : [
+    {
+      "name" : "Breki Tomasson",
+      "email" : "breki.tomasson@gmail.com"
+    }
+  ],
+  "minimum-stability" : "beta",
+  "autoload" : {
+    "psr-4" : {
+      "TankerTrackers\\" : "src"
+    }
+  },
+  "autoload-dev" : {
+    "psr-4" : {
+      "TankerTesters\\" : "test"
+    }
+  }
+}
