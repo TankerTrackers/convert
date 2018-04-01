@@ -24,8 +24,9 @@ namespace TankerTesters {
          * @covers \TankerTrackers\Convert::api()
          * @covers \TankerTrackers\FluidMeasures\ApiGrade
          * @covers \TankerTrackers\FluidMeasures\BarrelsPerTonne
+         * @throws \TankerTrackers\Exceptions\ValueNotNumeric
          */
-        public function testConversionOfApiGradeToBarrelsPerTonne ()
+        public function testConversionOfApiGradeToBarrelsPerTonne () : void
         {
             $givenInput = 32;
             $expected = new BarrelsPerTonne(7.267151143409561);
@@ -33,17 +34,18 @@ namespace TankerTesters {
             $actual = Convert::api($givenInput)
                              ->toBpt();
 
-            $this->assertEquals($expected, $actual);
+            static::assertEquals($expected, $actual);
         }
 
         /**
          * @throws \PHPUnit\Framework\ExpectationFailedException
          * @throws \SebastianBergmann\RecursionContext\InvalidArgumentException
+         * @throws \TankerTrackers\Exceptions\ValueNotNumeric
          * @covers \TankerTrackers\Convert::bpt()
          * @covers \TankerTrackers\FluidMeasures\ApiGrade
          * @covers \TankerTrackers\FluidMeasures\BarrelsPerTonne
          */
-        public function testConversionOfBarrelsPerTonneToApiGrade ()
+        public function testConversionOfBarrelsPerTonneToApiGrade () : void
         {
             $givenInput = 7.4;
             $expected = new ApiGrade(34.9889);
@@ -51,7 +53,7 @@ namespace TankerTesters {
             $actual = Convert::bpt($givenInput)
                              ->toApi();
 
-            $this->assertEquals($expected, $actual);
+            static::assertEquals($expected, $actual);
         }
 
         /**
@@ -60,8 +62,9 @@ namespace TankerTesters {
          * @covers \TankerTrackers\Convert::gravity()
          * @covers \TankerTrackers\FluidMeasures\ApiGrade
          * @covers \TankerTrackers\FluidMeasures\Gravity
+         * @throws \TankerTrackers\Exceptions\ValueNotNumeric
          */
-        public function testConversionOfGravityToApiGrade ()
+        public function testConversionOfGravityToApiGrade () : void
         {
             $givenInput = 0.85;
             $expected = new ApiGrade(5.882614396515323);
@@ -69,7 +72,7 @@ namespace TankerTesters {
             $actual = Convert::gravity($givenInput)
                              ->toApi();
 
-            $this->assertEquals($expected, $actual);
+            static::assertEquals($expected, $actual);
         }
 
         /**
@@ -78,8 +81,9 @@ namespace TankerTesters {
          * @covers \TankerTrackers\Convert::api()
          * @covers \TankerTrackers\FluidMeasures\ApiGrade
          * @covers \TankerTrackers\FluidMeasures\Gravity
+         * @throws \TankerTrackers\Exceptions\ValueNotNumeric
          */
-        public function testConversionOfApiGradeToGravity ()
+        public function testConversionOfApiGradeToGravity () : void
         {
             $givenInput = 40;
             $expected = new Gravity(0.8250728862973761);
@@ -87,18 +91,20 @@ namespace TankerTesters {
             $actual = Convert::api($givenInput)
                              ->toGravity();
 
-            $this->assertEquals($expected, $actual);
+            static::assertEquals($expected, $actual);
         }
 
         /**
          * @throws \PHPUnit\Framework\ExpectationFailedException
          * @throws \SebastianBergmann\RecursionContext\InvalidArgumentException
+         * @throws \TankerTrackers\Exceptions\ValueNotNumeric
          * @covers \TankerTrackers\Convert::gravity()
          * @covers \TankerTrackers\FluidMeasures\BarrelsPerTonne
          * @covers \TankerTrackers\FluidMeasures\Gravity
+         * @throws \TankerTrackers\Exceptions\ValueNotNumeric
          */
 
-        public function testConversionOfGravityToBarrelsPerTonne ()
+        public function testConversionOfGravityToBarrelsPerTonne () : void
         {
             $givenInput = 0.75;
             $expected = new BarrelsPerTonne(6.106103502711506);
@@ -106,7 +112,7 @@ namespace TankerTesters {
             $actual = Convert::gravity($givenInput)
                              ->toBpt();
 
-            $this->assertEquals($expected, $actual);
+            static::assertEquals($expected, $actual);
         }
 
         /**
@@ -115,8 +121,9 @@ namespace TankerTesters {
          * @covers \TankerTrackers\Convert::bpt()
          * @covers \TankerTrackers\FluidMeasures\BarrelsPerTonne
          * @covers \TankerTrackers\FluidMeasures\Gravity
+         * @throws \TankerTrackers\Exceptions\ValueNotNumeric
          */
-        public function testConversionOfBarrelsPerTonneToGravity ()
+        public function testConversionOfBarrelsPerTonneToGravity () : void
         {
             $givenInput = 7.25;
             $expected = new Gravity(0.8674907829104316);
@@ -124,7 +131,7 @@ namespace TankerTesters {
             $actual = Convert::bpt($givenInput)
                              ->toGravity();
 
-            $this->assertEquals($expected, $actual);
+            static::assertEquals($expected, $actual);
         }
 
     }

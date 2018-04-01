@@ -1,7 +1,7 @@
 <phpunit colors="true" bootstrap="test/autoload.php">
     <filter>
-        <whitelist>
-            <directory suffix=".php">src/</directory>
+        <whitelist processUncoveredFilesFromWhitelist="true">
+            <directory suffix=".php">./src/</directory>
         </whitelist>
         <logging>
             <log type="tap" target="test/build/report.tap"/>

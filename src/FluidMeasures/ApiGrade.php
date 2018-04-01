@@ -7,36 +7,29 @@ namespace TankerTrackers\FluidMeasures {
     /**
      * Class ApiGrade
      *
-     * @property array $from
-     * @package TankerTrackers
+     * @package TankerTrackers\Convert
+     * @since   v0.5.0
+     * @author  Breki Tomasson <breki.tomasson@gmail.com>
      */
-    class ApiGrade {
-
-        public const VALUE = 'value';
+    class ApiGrade
+            extends BaseLiquid {
 
         /**
-         * ApiGrade constructor.
-         *
-         * @param $value
+         * @return BarrelsPerTonne
+         * @throws \TankerTrackers\Exceptions\ValueNotNumeric
          */
-        public function __construct ($value = null)
+        public function toBpt () : BarrelsPerTonne
         {
-            $this->from = [self::VALUE => $value];
+            return new BarrelsPerTonne($this->value ? ($this->value + 131.5) / (141.5 * 0.159) : null);
         }
 
-        /** @return BarrelsPerTonne */
-        public function toBpt ()
-        : BarrelsPerTonne
+        /**
+         * @return Gravity
+         * @throws \TankerTrackers\Exceptions\ValueNotNumeric
+         */
+        public function toGravity () : Gravity
         {
-            return new BarrelsPerTonne($this->from[self::VALUE] ? ($this->from[self::VALUE] + 131.5) / (141.5 * 0.159)
-                                               : null);
-        }
-
-        /** @return Gravity */
-        public function toGravity ()
-        : Gravity
-        {
-            return new Gravity($this->from[self::VALUE] ? (141.5 / ($this->from[self::VALUE] + 131.5)) : null);
+            return new Gravity($this->value ? (141.5 / ($this->value + 131.5)) : null);
         }
     }
 }
