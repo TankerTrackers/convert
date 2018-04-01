@@ -15,9 +15,10 @@ namespace TankerTrackers {
          * @param $apiValue
          *
          * @return FluidMeasures\ApiGrade
+         * @throws Exceptions\ValueNotNumeric
          */
-        public static function api ($apiValue)
-        : FluidMeasures\ApiGrade {
+        public static function api ($apiValue) : FluidMeasures\ApiGrade
+        {
             return new FluidMeasures\ApiGrade($apiValue);
         }
 
@@ -25,9 +26,10 @@ namespace TankerTrackers {
          * @param $bptValue
          *
          * @return FluidMeasures\BarrelsPerTonne
+         * @throws Exceptions\ValueNotNumeric
          */
-        public static function bpt ($bptValue)
-        : FluidMeasures\BarrelsPerTonne {
+        public static function bpt ($bptValue) : FluidMeasures\BarrelsPerTonne
+        {
             return new FluidMeasures\BarrelsPerTonne($bptValue);
         }
 
@@ -35,9 +37,10 @@ namespace TankerTrackers {
          * @param $gravValue
          *
          * @return FluidMeasures\Gravity
+         * @throws Exceptions\ValueNotNumeric
          */
-        public static function gravity ($gravValue)
-        : FluidMeasures\Gravity {
+        public static function gravity ($gravValue) : FluidMeasures\Gravity
+        {
             return new FluidMeasures\Gravity($gravValue);
         }
     }
