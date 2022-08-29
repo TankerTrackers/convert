@@ -8,7 +8,6 @@ use TankerTrackers\Interfaces\LiquidInterface;
 
 abstract class BaseLiquid implements LiquidInterface
 {
-
     public function __construct(public float $value)
     {
         // Promoted properties, nothing else to do here.
@@ -18,6 +17,4 @@ abstract class BaseLiquid implements LiquidInterface
     {
         return ['value' => $this->value];
     }
-
 }
-

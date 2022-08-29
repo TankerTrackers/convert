@@ -6,6 +6,8 @@ This package is mainly concerned with converting between the following three uni
 - [Barrels per Tonne](https://en.wikipedia.org/wiki/Barrel_(unit))
 - [Specific Gravity](https://en.wikipedia.org/wiki/Relative_density), AKA "Relative Density"
 
+It was developed to be compatible with PHP 8.0 and greater.
+
 # Installation
 
 ```sh

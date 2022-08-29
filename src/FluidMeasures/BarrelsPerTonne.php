@@ -6,19 +6,9 @@ namespace TankerTrackers\FluidMeasures;
 
 class BarrelsPerTonne extends BaseLiquid
 {
-    public function toGravity() : Gravity
+    public function apiValue() : float
     {
-        return $this->toApi()->toGravity();
-    }
-
-    public function toApi() : ApiGrade
-    {
-        return new ApiGrade($this->value * (141.5 * 0.159) - 131.5);
-    }
-
-    public function toBpt() : BarrelsPerTonne
-    {
-        return $this;
+        return $this->toApi()->value;
     }
 
     public function bptValue() : float
@@ -31,8 +21,18 @@ class BarrelsPerTonne extends BaseLiquid
         return $this->toGravity()->value;
     }
 
-    public function apiValue() : float
+    public function toApi() : ApiGrade
     {
-        return $this->toApi()->value;
+        return new ApiGrade($this->value * (141.5 * 0.159) - 131.5);
+    }
+
+    public function toBpt() : BarrelsPerTonne
+    {
+        return $this;
+    }
+
+    public function toGravity() : Gravity
+    {
+        return $this->toApi()->toGravity();
     }
 }
