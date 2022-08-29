@@ -2,45 +2,22 @@
 
 declare(strict_types = 1);
 
-/**
- * @package TankerTrackers\Convert
- * @since   v0.6.0
- */
+namespace TankerTrackers\FluidMeasures;
 
-namespace TankerTrackers\FluidMeasures {
+use TankerTrackers\Interfaces\LiquidInterface;
 
-    use TankerTrackers\Exceptions\ValueNotNumeric;
-    use function is_numeric;
+abstract class BaseLiquid implements LiquidInterface
+{
 
-    /**
-     * Class BaseLiquid
-     *
-     * @package TankerTrackers\Convert
-     */
-    abstract class BaseLiquid {
+    public function __construct(public float $value)
+    {
+        // Promoted properties, nothing else to do here.
+    }
 
-        public $value;
-
-        /**
-         * Abstract Liquid constructor.
-         *
-         * @param $value
-         *
-         * @throws ValueNotNumeric
-         */
-        public function __construct ($value = null)
-        {
-            $this->value = $value;
-
-            if ($this->value === null) {
-                throw new ValueNotNumeric('Value entered is null');
-            }
-
-            if ( ! is_numeric($this->value)) {
-                throw new ValueNotNumeric('Value entered needs to be numeric.');
-            }
-        }
-
+    public function __serialize() : array
+    {
+        return ['value' => $this->value];
     }
 
 }
+

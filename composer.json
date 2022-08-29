@@ -3,8 +3,13 @@
   "description" : "I convert things to other things!",
   "homepage" : "https://github.com/TankerTrackers/Convert",
   "type" : "library",
+  "require": {
+    "php": "^8.0"
+  },
   "require-dev" : {
-    "phpunit/phpunit" : "^7.0"
+    "pestphp/pest": "^1.22",
+    "psy/psysh": "^0.11.8",
+    "brekitomasson/php-cs-fixer-breki-config": "^1.1"
   },
   "license" : "MIT",
   "authors" : [
@@ -22,6 +27,11 @@
   "autoload-dev" : {
     "psr-4" : {
       "TankerTesters\\" : "test"
+    }
+  },
+  "config": {
+    "allow-plugins": {
+      "pestphp/pest-plugin": true
     }
   }
 }

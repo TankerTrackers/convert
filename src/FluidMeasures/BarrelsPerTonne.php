@@ -2,35 +2,37 @@
 
 declare(strict_types = 1);
 
-namespace TankerTrackers\FluidMeasures {
+namespace TankerTrackers\FluidMeasures;
 
-    /**
-     * Class BarrelsPerTonne
-     *
-     * @package TankerTrackers\Convert
-     * @since   v0.5.0
-     * @author  Breki Tomasson <breki.tomasson@gmail.com>
-     */
-    class BarrelsPerTonne
-            extends BaseLiquid {
+class BarrelsPerTonne extends BaseLiquid
+{
+    public function toGravity() : Gravity
+    {
+        return $this->toApi()->toGravity();
+    }
 
-        /**
-         * @return Gravity
-         * @throws \TankerTrackers\Exceptions\ValueNotNumeric
-         */
-        public function toGravity () : Gravity
-        {
-            return $this->toApi()
-                        ->toGravity();
-        }
+    public function toApi() : ApiGrade
+    {
+        return new ApiGrade($this->value * (141.5 * 0.159) - 131.5);
+    }
 
-        /**
-         * @return ApiGrade
-         * @throws \TankerTrackers\Exceptions\ValueNotNumeric
-         */
-        public function toApi () : ApiGrade
-        {
-            return new ApiGrade($this->value ? ($this->value * (141.5 * 0.159)) - 131.5 : null);
-        }
+    public function toBpt() : BarrelsPerTonne
+    {
+        return $this;
+    }
+
+    public function bptValue() : float
+    {
+        return $this->value;
+    }
+
+    public function gravityValue() : float
+    {
+        return $this->toGravity()->value;
+    }
+
+    public function apiValue() : float
+    {
+        return $this->toApi()->value;
     }
 }

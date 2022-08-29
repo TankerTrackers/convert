@@ -1,4 +1,4 @@
-<phpunit colors="true" bootstrap="test/autoload.php">
+<phpunit colors="true">
     <filter>
         <whitelist processUncoveredFilesFromWhitelist="true">
             <directory suffix=".php">./src/</directory>
