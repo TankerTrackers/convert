@@ -1,6 +1,6 @@
 {
   "name" : "tankertrackers/convert",
-  "description" : "I convert things to other things!",
+  "description" : "Convert freely between various types of petroleum-related fluid measurements",
   "homepage" : "https://github.com/TankerTrackers/Convert",
   "type" : "library",
   "require": {

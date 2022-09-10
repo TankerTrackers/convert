@@ -6,7 +6,12 @@ This package is mainly concerned with converting between the following three uni
 - [Barrels per Tonne](https://en.wikipedia.org/wiki/Barrel_(unit))
 - [Specific Gravity](https://en.wikipedia.org/wiki/Relative_density), AKA "Relative Density"
 
-It was developed to be compatible with PHP 8.0 and greater.
+It was developed to be compatible with PHP 8.0 and greater and is intentionally as light-weight as possible, not requiring any external dependencies or 
+relying on any non-standard PHP libraries.
+
+> Please note that future versions may require PHP 8.1 and greater due to the built-in support for Enums that it offers. A new Major release of this library 
+> will be released if PHP version dependencies change. At the moment, no significant changes are planned that would require this package to require PHP 8.2 
+> or greater. 
 
 # Installation
 
@@ -16,9 +21,9 @@ composer require tankertrackers/convert
 
 ## Usage
 
-If you are doing calculations on an oil grade with a relative density of 0.83, you can create an `Gravity` object by calling on the appropriate static 
-method on the `TankerTrackers\Convert` class like so: `Convert::gravity(0.83)`. If you wanted to see the corresponding API value for this Gravity value, you
-can instead call `Convert::gravity(0.83)->toApi()`.
+If you are doing calculations on an oil grade with a specific gravity (relative density) of 0.983, you can create an `Gravity` object by calling on the 
+appropriate static method on the `TankerTrackers\Convert` class like so: `Convert::gravity(0.983)`. If you wanted to see the corresponding API value for 
+this Gravity value, you can instead call `Convert::gravity(0.983)->toApi()`.
 
 Converting all three measurements between each other is done in the same way, and all three methods - `->toApi()`, `->toBpt()`, and `->toGravity()` - are 
 available on all three measurements.
@@ -63,8 +68,8 @@ measurement type and accessing the `$value` attribute:
 
 ### Api Grade Categories
 
-In the future, this package will contain some additional bells and whistles when it comes to analyzing the values of the various measurements. For example, 
-the `ApiGrade` class might offer a `->getCategory()` method so that something like this is possible:
+In the future, this package may see some additional bells and whistles when it comes to analyzing the values of the various measurements. For example, the 
+`ApiGrade` class might offer a `->getCategory()` method so that something like this is possible:
 
 ```php
 >>> $api = Convert::bpt(7.12)->toApi()
@@ -74,19 +79,20 @@ the `ApiGrade` class might offer a `->getCategory()` method so that something li
 
 ### Pre-defined Listings
 
-I might also consider adding a number of well known oil grades via Enum classes so that one can reference values directly, something like:
+I might also consider adding a number of well known oil grades via `Enum` classes so that one can reference values directly, something like:
 
 ```php
->>> \TankerTrackers\Common\ApiGrade::ATHABSCA_BITUMEN->getApi()
+>>> \TankerTrackers\Common\Grade::ATHABASCA_BITUMEN->getApi()
 => 31.0
->>> \TankerTrackers\Common\ApiGrade::ATHABSCA_BITUMEN->getGravity()
+>>> \TankerTrackers\Common\Grade::ATHABASCA_BITUMEN->getGravity()
 => 0.87076923076923
 ```
 
 ### Improvements to Value Checking
 
 At the moment, the system trusts that the values you are entering are valid for that category, so it has no reason to suspect anything is weird if you ask 
-it to create a liquid of -718 Barrels Per Tonne. Some sanity checks should probably be implemented that catch scenarios like this.
+it to create a `BarrelsPerTonne` object with the value of `-718`. Some sanity checks could be implemented that catch scenarios like this and throw 
+Exceptions when we know something is out of the ordinary.
 
 # Copyright / License
 
